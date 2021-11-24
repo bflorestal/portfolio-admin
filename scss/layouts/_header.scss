@@ -1,0 +1,43 @@
+@use "../abstracts" as abs;
+
+// _header.scss
+
+header {
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+  background-color: abs.$primary;
+  .header-container {
+    width: 100%;
+    height: 70px;
+    /*background-color: abs.$primary;*/
+    z-index: 3;
+    .logo {
+      width: auto;
+      height: 90%;
+      float: left;
+      span {
+        height: 100%;
+        margin: 16px 0 0 10px;
+        font-size: 38px;
+        color: #fff;
+        @media screen and (max-width: 768px) {
+          margin-top: 12px;
+        }
+      }
+    }
+    .menu-burger {
+      width: auto;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      float: right;
+      color: pink; // test color
+      height: 100%;
+      margin: 10px 10px;
+      @media screen and (max-width: 768px) {
+        display: flex;
+      }
+    }
+  }
+}
