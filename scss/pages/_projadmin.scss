@@ -31,8 +31,13 @@ main {
                 #btnRmvProj {
                     background-color: red;
                 }
+                @media screen and (max-width: 768px) {
+                    flex-direction: column;
+                }
             }
             &--table_container {
+                display: flex;
+                flex-direction: column;
                 table {
                     border-collapse: collapse;
                     border-spacing: 0;
@@ -47,10 +52,89 @@ main {
                         height: 50px;
                         vertical-align: middle;
                         padding: 0 1rem;
-                        img {
-                            max-width: 50px;
-                            max-height: 50px;
+                        a {
+                            color: rgb(0, 102, 204);
+                            transition: opacity 0.2s ease-in;
+                            &:visited {
+                                color: rgb(0, 102, 204)
+                            }
+                            &:hover {
+                                opacity: 0.7;
+                            }
                         }
+                        img {
+                            max-width: 100px;
+                            max-height: 100px;
+                        }
+                    }
+                    textarea {
+                        border: 1px solid #3e4446;
+                        padding: 10px;
+                        border-radius: 5px;
+                        max-width: 20%;
+                        max-height: 35px;
+                    }
+                }
+                .btnCCcontainer {
+                    display: none;
+                    justify-content: center;
+                    flex-direction: row;
+                    margin-top: 1rem;
+                    gap: 1rem;
+                    #btnConfirmAP {
+                        background-color: abs.$secondary;
+                    }
+                    #btnCancelAP {
+                        background-color: red;
+                    }
+                    @media screen and (max-width: 768px) {
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                }
+            }
+            .mon-formulaire {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                max-width: 360px;
+                gap: 1rem;
+                margin-bottom: 2rem;
+                div {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    gap: 0.5rem;
+                }
+                textarea {
+                    font-size: .8rem;
+                    letter-spacing: 1px;
+                    padding: 10px;
+                    max-width: 100%;
+                    max-height: 100px;
+                    line-height: 1.5;
+                    border-radius: 5px;
+                    border: 1px solid #ccc;
+                    border-color: rgb(62, 68, 70);
+                    box-shadow: rgb(82, 88, 92) 1px 1px 1px;
+                }
+                a {
+                    background-color: #000;
+                    max-width: 28%;
+                    font-size: 1rem;
+                    border: 0;
+                    padding: 10px 15px;
+                    border-radius: 10px;
+                    transition: opacity 0.2s ease;
+                    text-align: center;
+                    cursor: pointer;
+                    color: #fff;
+                    font-weight: 400;
+                    &:hover {
+                        opacity: 0.85;
+                    }
+                    &:visited {
+                        color: #fff;
                     }
                 }
             }
@@ -91,6 +175,9 @@ main {
                     }
                 }
             }
+        }
+        @media screen and (max-width: 768px) {
+            padding: 2rem 0 1rem 0;
         }
     }
 }   

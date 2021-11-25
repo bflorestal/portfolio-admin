@@ -80,6 +80,18 @@ input[type=submit]:hover, button:hover, .bouton:hover {
   opacity: 0.85;
 }
 
+input[type=text] {
+  width: 75%;
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid #3e4446;
+  padding: 10px;
+}
+
+input, textarea {
+  font-family: "Montserrat", Arial, sans-serif;
+}
+
 .header-container {
   position: fixed;
   width: 100%;
@@ -159,7 +171,7 @@ input[type=submit]:hover, button:hover, .bouton:hover {
   text-align: right;
   padding: 10px 15px;
   margin-left: 10px;
-  background: #080C2B;
+  background: gray;
   color: white;
   border-radius: 7px;
 }
@@ -339,6 +351,15 @@ main section .projets-crud--boutons #btnModProj {
 main section .projets-crud--boutons #btnRmvProj {
   background-color: red;
 }
+@media screen and (max-width: 768px) {
+  main section .projets-crud--boutons {
+    flex-direction: column;
+  }
+}
+main section .projets-crud--table_container {
+  display: flex;
+  flex-direction: column;
+}
 main section .projets-crud--table_container table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -355,9 +376,90 @@ main section .projets-crud--table_container table th, main section .projets-crud
   vertical-align: middle;
   padding: 0 1rem;
 }
+main section .projets-crud--table_container table th a, main section .projets-crud--table_container table td a {
+  color: #0066cc;
+  transition: opacity 0.2s ease-in;
+}
+main section .projets-crud--table_container table th a:visited, main section .projets-crud--table_container table td a:visited {
+  color: #0066cc;
+}
+main section .projets-crud--table_container table th a:hover, main section .projets-crud--table_container table td a:hover {
+  opacity: 0.7;
+}
 main section .projets-crud--table_container table th img, main section .projets-crud--table_container table td img {
-  max-width: 50px;
-  max-height: 50px;
+  max-width: 100px;
+  max-height: 100px;
+}
+main section .projets-crud--table_container table textarea {
+  border: 1px solid #3e4446;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 20%;
+  max-height: 35px;
+}
+main section .projets-crud--table_container .btnCCcontainer {
+  display: none;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+main section .projets-crud--table_container .btnCCcontainer #btnConfirmAP {
+  background-color: #00de94;
+}
+main section .projets-crud--table_container .btnCCcontainer #btnCancelAP {
+  background-color: red;
+}
+@media screen and (max-width: 768px) {
+  main section .projets-crud--table_container .btnCCcontainer {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+main section .projets-crud .mon-formulaire {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 360px;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+main section .projets-crud .mon-formulaire div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.5rem;
+}
+main section .projets-crud .mon-formulaire textarea {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  padding: 10px;
+  max-width: 100%;
+  max-height: 100px;
+  line-height: 1.5;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  border-color: #3e4446;
+  box-shadow: #52585c 1px 1px 1px;
+}
+main section .projets-crud .mon-formulaire a {
+  background-color: #000;
+  max-width: 28%;
+  font-size: 1rem;
+  border: 0;
+  padding: 10px 15px;
+  border-radius: 10px;
+  transition: opacity 0.2s ease;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 400;
+}
+main section .projets-crud .mon-formulaire a:hover {
+  opacity: 0.85;
+}
+main section .projets-crud .mon-formulaire a:visited {
+  color: #fff;
 }
 main section .projets-container {
   display: flex;
@@ -399,6 +501,11 @@ main section .projets-container .projet-info--img {
 }
 main section .projets-container .projet-info--img img {
   border-radius: 15px;
+}
+@media screen and (max-width: 768px) {
+  main section {
+    padding: 2rem 0 1rem 0;
+  }
 }
 
 main {
