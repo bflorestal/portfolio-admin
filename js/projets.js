@@ -33,68 +33,55 @@ projCategoriesNoID.shift();
 
 // Boutons CRUD
 let btnAddProj = document.getElementById("btnAddProj");
+let btnAPChoice = document.getElementById("btnAPChoice");
 let btnConfirmAP = document.getElementById("btnConfirmAP");
 let btnCancelAP = document.getElementById("btnCancelAP");
 let btnModProj = document.getElementById("btnModProj");
 let btnRmvProj = document.getElementById("btnRmvProj");
 
 // Ajout des données de l'array dans le tableau
-for (let i = 0; i < projetsListe.length ; i++) {
-    // Création des lignes
-    let projetRow = document.createElement("tr");
-    projetRow.id = `tabProj${projetsListe[i].id}`; // un ID par ligne
-    tableauBody.appendChild(projetRow);
-    // Ajout des données de l'array 1 par 1 au tableau
-    for (const [key, value] of Object.entries(projetsListe[i])) {
-        // key = nom caractéristiques projet, value = caractéristiques projet
-        // Création des cellules
-        let projetCell = document.createElement("td");
-        // Balise <a> si c'est le lien
-        if (`${key}` == "url") {
-            let projetLien = document.createElement("a");
-            projetLien.href = `${value}`;
-            projetLien.target = "_blank"; // Ouvrir dans un nouvel onglet
-            projetLien.textContent = "Cliquez ici";
-            projetRow.appendChild(projetCell);
-            projetCell.appendChild(projetLien); // Ajout du lien dans la cellule
-        } else if (`${key}` == "image") { // Balise <img> si c'est l'img
-            let projetImg = document.createElement("img");
-            projetImg.src = `${value}`;
-            projetImg.alt = `${projetsListe[i].name}`;
-            projetRow.appendChild(projetCell);
-            projetCell.appendChild(projetImg); // Ajout du lien dans la cellule
-        } else { // S'il n'y a que du texte
-            projetCell.textContent = `${value}`;
-            projetRow.appendChild(projetCell); // Ajout du texte dans la cellule
+function createTableau() {
+    for (let i = 0; i < projetsListe.length ; i++) {
+        // Création des lignes
+        let projetRow = document.createElement("tr");
+        projetRow.id = `tabProj${projetsListe[i].id}`; // un ID par ligne
+        tableauBody.appendChild(projetRow);
+        // Ajout des données de l'array 1 par 1 au tableau
+        for (const [key, value] of Object.entries(projetsListe[i])) {
+            // key = nom caractéristiques projet, value = caractéristiques projet
+            // Création des cellules
+            let projetCell = document.createElement("td");
+            // Balise <a> si c'est le lien
+            if (`${key}` == "url") {
+                let projetLien = document.createElement("a");
+                projetLien.href = `${value}`;
+                projetLien.target = "_blank"; // Ouvrir dans un nouvel onglet
+                projetLien.textContent = "Cliquez ici";
+                projetRow.appendChild(projetCell);
+                projetCell.appendChild(projetLien); // Ajout du lien dans la cellule
+            } else if (`${key}` == "image") { // Balise <img> si c'est l'img
+                let projetImg = document.createElement("img");
+                projetImg.src = `${value}`;
+                projetImg.alt = `${projetsListe[i].name}`;
+                projetRow.appendChild(projetCell);
+                projetCell.appendChild(projetImg); // Ajout du lien dans la cellule
+            } else { // S'il n'y a que du texte
+                projetCell.textContent = `${value}`;
+                projetRow.appendChild(projetCell); // Ajout du texte dans la cellule
+            }
         }
     }
 }
-
-// Fonction qui récupère l'ID du projet en GET
-function findGetParameter(projectID) {
-    var result = null,
-        tmp = [];
-    var items = location.search.substr(1).split("&"); // Pour enlever "?" et "&"
-    for (var index = 0; index < items.length; index++) {
-        tmp = items[index].split("="); // Pour enlever "=" et n'avoir que l'ID
-        if (tmp[0] === projectID) result = decodeURIComponent(tmp[1]);
-    }
-    return result;
-}
-// Élément de l'URL en GET à vérifier
-let checkInURL = "id";
-// Stockage de l'ID qui est dans l'URL
-let whichIDInURL = 0;
-window.onload = function(){
-   whichIDInURL = findGetParameter(checkInURL);
-}
+window.onload = createTableau(); // La fonction s'effectue au chargement de la page
 
 // Ajout projet
 let newProjID = 0;
 const newProjCont = [];
 function addProj() {
+
     // Empêche d'ajouter plusieurs fois d'un coup
     btnAddProj.style.display = "none";
+    btnAPChoice.style.display = "flex";
 
     // Création d'une ligne dans le tableau
     let newProjRow = document.createElement("tr");
@@ -127,15 +114,8 @@ function addProj() {
         newProjTCInput.placeholder = `${elm}...`;
         newProjTextCell.appendChild(newProjTCInput);
     });
-
-    // Mettre l'ID du nouveau projet en href du bouton confirmer (GET)
-    btnConfirmAP.href = `?id=${newProjID}`;
 }
 
-// Affichage du bouton de confirmation
-btnAddProj.addEventListener("click", () => {
-    btnConfirmAP.parentNode.style.display = "flex";
-});
 // Confirmation ajout projet
 function confirmAddProj() {
     const newProjElems = [];
@@ -166,14 +146,46 @@ function confirmAddProj() {
         indexOE++;
     }
     
-    // Ajouter l'objet au tableau projetsListe
-    projetsListe.push(newProjObj);
+    // Ajoute l'objet au tableau projetsListe si tout a été rempli
+    if (newProjObj.id && newProjObj.name && newProjObj.description && newProjObj.url && newProjObj.image) {
+        projetsListe.push(newProjObj);
+    }
+    // Initialisation d'un compteur et une variable qui stocke les caractéristiques de l'objet
+    let countNPRc = 1; 
+    let contenuCell = "";
+    // Si le nouveau projet a bien été complété, l'ajouter au tableau
+    if (newProjObj.id && newProjObj.name && newProjObj.description && newProjObj.url && newProjObj.image) {
+        // Si l'objet correspond bien au dernier élément de la liste des projets
+        if (newProjObj == projetsListe.at(-1)) {
+            // Remplace l'input par son contenu
+            for (const [key, value] of Object.entries(projetsListe.at(-1))) {
+                if (key != "id") { // ID déjà présent donc pas modifié
+                    if (key == "url"){
+                        contenuCell = `<a href="${value}" target="_blank">Cliquez ici</a>`;
+                        newProjRow.children[countNPRc].innerHTML = contenuCell;
+                    } else if (key == "image") {
+                        contenuCell = `<img src="${value}" alt="${value}" />`;
+                        newProjRow.children[countNPRc].innerHTML = contenuCell;
+                    } else {
+                        contenuCell = value;
+                        newProjRow.children[countNPRc].innerHTML = contenuCell;
+                    }
+                    countNPRc++;
+                }
+            }
+        }
+        btnAPChoice.style.display = "none"; // Les boutons Confirmer/Annuler disparaissent
+        btnAddProj.style.display = "block"; // Le bouton ajouter réapparaît
+        newProjRow.id = ""; // Pour éviter de supprimer l'ancienne ligne quand on annule après un ajout
+        console.log("succès"); // Remplacer par toast
+    }
 }
 
 // Annuler l'ajout d'un projet
 btnCancelAP.addEventListener("click", () => {
-    let pageLoc = window.location.pathname.substr(7); // Enlève infos GET
-    window.location = pageLoc;
+    newProjRow.remove(); // La ligne du tableau est supprimée
+    btnAPChoice.style.display = "none"; // Les boutons Confirmer/Annuler disparaissent
+    btnAddProj.style.display = "block"; // Le bouton ajouter réapparaît
 });
 
 
