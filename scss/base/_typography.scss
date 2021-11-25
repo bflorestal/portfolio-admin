@@ -3,18 +3,18 @@
 // _typography.scss
 
 h1 {
-  font-size: 6.25rem;
+  font-size: 2.25rem;
   font-weight: 600;
+  text-align: center;
   @media screen and (max-width: 768px) {
-    font-size: 4.375rem;
-    margin-bottom: 1rem;
+    font-size: 1.5rem;
   }
 }
 
 h2 {
   font-size: 2.188rem;
   @media screen and (max-width: 768px) {
-    font-size: 1.563rem;
+    //font-size: 1.463rem;
   }
 }
 
@@ -24,4 +24,8 @@ h3 {
 
 h4 {
   font-size: 1.4rem;
+}
+
+a {
+  text-decoration: none;
 }

@@ -1,3 +1,87 @@
 @use "../abstracts" as abs;
 
 // _home.scss
+main {
+    width: 100%;
+    padding-top: abs.$header-h;
+    section{
+        width: 100%;
+        padding: 2rem 0;
+        .title-container {
+            @include abs.flex-centre;
+            width: 100%;
+            margin: 1rem 0;
+        }
+        .home-pic {
+            @include abs.flex-centre;
+            width: 100%;
+            margin-top: 1rem;
+            img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+                box-shadow: rgba(40, 40, 74, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px, rgba(0, 0, 0, 0.03) 0px -6px 16px -6px;
+                @media screen and (max-width: 768px) {
+                    max-width: 80%;
+                }
+            }
+        }
+        .home-info {
+            @include abs.flex-centre;
+            flex-direction: column;
+            width: 100%;
+            margin: 2rem 0;
+            span {
+                font-size: 1.2rem;
+            }
+        }
+        .home-nav-container {
+            @include abs.flex-centre;
+            width: 100%;
+            margin: 1rem 0;
+            nav {
+                @include abs.flex-centre;
+                width: 50%;
+                .home-nav-option {
+                    @include abs.flex-centre;
+                    flex-direction: column;
+                    width: 50%;
+                    text-align: center;
+                    border: 1px solid abs.$primary;
+                    border-radius: 15px;
+                    height: 8rem;
+                    margin: 0 3rem;
+                    @media screen and (max-width: 768px) {
+                        width: 80%;
+                        margin-bottom: 2rem;
+                    }
+                    a {
+                        display: flex;
+                        justify-content: center;
+                        flex-direction: column;
+                        width: 100%;
+                        height: 100%;
+                        &:hover {
+                            opacity: 0.85;
+                            transition: opacity 0.2s ease-in;
+                        }
+                        i {
+                            font-size: 2rem;
+                            color: abs.$primary;
+                        }
+                        span {
+                            color: rgb(0, 102, 204);
+                            &:visited {
+                                color: rgb(0, 102, 204)
+                            }
+                        }
+                    }
+                }
+                @media screen and (max-width: 768px) {
+                    flex-direction: column;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

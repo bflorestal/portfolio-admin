@@ -2,41 +2,94 @@
 
 // _header.scss
 
-header {
+.header-container {
   position: fixed;
-  z-index: 3;
-  width: 100%;
-  background-color: abs.$primary;
-  .header-container {
-    width: 100%;
-    height: 70px;
-    /*background-color: abs.$primary;*/
-    z-index: 3;
-    .logo {
-      width: auto;
-      height: 90%;
-      float: left;
-      span {
-        height: 100%;
-        margin: 16px 0 0 10px;
-        font-size: 38px;
-        color: #fff;
-        @media screen and (max-width: 768px) {
-          margin-top: 12px;
+	width: 100%;
+  height: abs.$header-h;
+  //max-width: 1920px;
+  display: block;
+	float: left;
+	z-index: 1;
+	background: abs.$primary;
+  margin: 0 auto;
+  .logo {
+    width: 15%;
+    height: 100%;
+    float: left;
+    img {
+      width: 75px;
+      margin: 0 0 20px 15px;
+    }
+  } 
+  nav {
+    width: 85%;
+    height: 100%;
+    float: left;
+    div {
+      float: right;
+      padding: 25px 30px 0 0;
+      @media screen and (min-width: 900px) {
+        a {
+          &:hover, &:active {
+            opacity: 0.7;
+            transition: opacity 0.2s ease-in;
+          }
         }
       }
     }
+    a {
+      text-decoration: none;
+      padding: 10px 15px;
+      margin-left: 10px;
+      background: #1da1f2;
+      color : white;
+      border-radius: 7px;
+    }
     .menu-burger {
       width: auto;
-      display: none;
-      justify-content: center;
-      align-items: center;
-      float: right;
-      color: pink; // test color
       height: 100%;
-      margin: 10px 10px;
-      @media screen and (max-width: 768px) {
-        display: flex;
+      padding: 10px 0 10px 10px;
+      position: relative;
+      z-index: 1;
+      .icon, .menu {
+        padding: 10px 10px;
+        position: relative;
+      }
+      .icon {
+        display: none;
+        height: 100%;
+        padding: 6px 1rem 0 0;
+        i {
+          display: flex;
+          width: 100%;
+          float: right;
+          font-size: 3rem;
+          color: #fff;
+        }
+        @media screen and (max-width: 768px) {
+          display: block;
+        }
+      }
+      .menu {
+        display: block;
+        a {
+          display: inline-block;
+          width: auto;
+          text-align: right;
+          padding: 10px 15px;
+          margin-left: 10px;
+          background: #080C2B;
+          color: white;
+          border-radius: 7px;
+          @media screen and (max-width: 768px) {
+            display: block;
+            width: 100vw;
+          }
+        }
+        @media screen and (max-width: 768px) {
+          display: none;
+          padding-right: 0;
+        }
       }
     }
   }
