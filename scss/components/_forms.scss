@@ -1,0 +1,15 @@
+@use "../abstracts" as abs;
+
+// _forms.scss
+
+input[type=text] {
+    width: 75%;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid #3e4446;
+    padding: 10px;
+}
+
+input, textarea {
+    font-family: "Montserrat", Arial, sans-serif;
+}

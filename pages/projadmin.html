@@ -51,10 +51,23 @@
                     <button class="bouton" id="btnModProj" onclick="modProj()">Modifier</button>
                     <button class="bouton" id="btnRmvProj" onclick="rmvProj()">Supprimer</button>  
                 </div>
+                <!-- Formulaire
+                <div class="mon-formulaire">
+                    <input type="text" name="projetNom" id="projetNom" placeholder="Nom">
+                    <textarea name="projetDesc" id="projetDesc" rows="5" cols="33" placeholder="Description"></textarea>
+                    <div>
+                        <input type="text" name="projetURL" id="projetURL" placeholder="Lien">
+                        <input type="text" name="projetIMG" id="projetIMG" placeholder="Lien image">
+                    </div>
+                    <div>
+                        <a href="?test=ok" id="projetValider">Valider</a>
+                    </div>
+                </div>
+                -->
                 <div class="projets-crud--table_container">
-                    <table>
+                    <table id="monTableau">
                         <thead>
-                            <tr>
+                            <tr id="categories">
                                 <th>ID</th>
                                 <th>Nom</th>
                                 <th>Description</th>
@@ -63,17 +76,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>0</td>
-                                <td>Test</td>
-                                <td>Test 123</td>
-                                <td><a href="#">Ici</a></td>
-                                <td><img src="#" alt="Image projet" /></td>
-                            </tr>
                         </tbody>
                     </table>
+                    <div class="btnCCcontainer">
+                        <a class="bouton" id="btnConfirmAP" onclick="confirmAddProj()" disabled>Confirmer</a>
+                        <a class="bouton" id="btnCancelAP">Annuler</a>
+                    </div>
                 </div>
             </div>
+            <!-- Affichage projets
             <div class="projets-container" id="projCont">
                 <div class="projet-info">
                     <div class="projet-info--txt">
@@ -86,11 +97,12 @@
                     </div>
                 </div>
             </div>
+            -->
         </section>
         <footer>
             <div class="footer-container">
                 <div class="block-par-2">
-                    <p>© Bryan Florestal, 2020 - Tous droits réservés</p>
+                    <p>© Bryan Florestal, 2021 - Tous droits réservés</p>
                 </div>
             </div>
         </footer>
@@ -98,5 +110,6 @@
 
     <!-- Mon JS -->
     <script type="text/javascript" src="../js/script.js"></script>
+    <script type="text/javascript" src="../js/projets.js"></script>
 </body>
 </html>
