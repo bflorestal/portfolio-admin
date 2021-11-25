@@ -1,9 +1,25 @@
 {
-  "posts": [
-    { "id": 1, "title": "json-server", "author": "typicode" }
+  "projects": [
+    { 
+      "id": 1, 
+      "name": "Sigma", 
+      "description": "Le tout premier projet",
+      "url": "https://google.com/",
+      "image": "https://picsum.photos/200"
+    },
+    { 
+      "id": 2, 
+      "name": "Monprojet", 
+      "description": "Le projet qu'on peut supprimer",
+      "url": "https://google.fr/",
+      "image": "https://picsum.photos/200"
+    }
   ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
-  ],
-  "profile": { "name": "typicode" }
+  "cvs": [
+    { 
+      "id": 1, 
+      "body": "some comment", 
+      "postId": 1 
+    }
+  ]
 }

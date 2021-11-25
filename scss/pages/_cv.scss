@@ -1,3 +1,16 @@
 @use "../abstracts" as abs;
 
 // _cv.scss
+main {
+    width: 100%;
+    padding-top: abs.$header-h;
+    section{
+        width: 100%;
+        padding: 2rem 0;
+        .title-container {
+            @include abs.flex-centre;
+            width: 100%;
+            margin: 1rem 0;
+        }
+    }
+}   

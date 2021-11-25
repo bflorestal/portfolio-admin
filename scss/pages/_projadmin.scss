@@ -1,3 +1,96 @@
 @use "../abstracts" as abs;
+@use "../components" as comp;
 
 // _projadmin.scss
+main {
+    width: 100%;
+    padding-top: abs.$header-h;
+    section{
+        width: 100%;
+        padding: 2rem 0;
+        .title-container {
+            @include abs.flex-centre;
+            width: 100%;
+            margin: 1rem 0;
+        }
+        .projets-crud {
+            @include abs.flex-centre;
+            flex-direction: column;
+            margin: 2rem 0;
+            gap: 1rem;
+            &--boutons {
+                display: flex;
+                flex-direction: row;
+                gap: 1rem;
+                #btnAddProj {
+                    background-color: rgb(0, 162, 255);
+                }
+                #btnModProj {
+                    background-color: abs.$secondary;
+                }
+                #btnRmvProj {
+                    background-color: red;
+                }
+            }
+            &--table_container {
+                table {
+                    border-collapse: collapse;
+                    border-spacing: 0;
+                    border-radius: 50px 0px;
+                    border: solid 2px;
+                    width: 80%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    th, td {
+                        text-align: center;
+                        border: solid 2px;
+                        height: 50px;
+                        vertical-align: middle;
+                        padding: 0 1rem;
+                        img {
+                            max-width: 50px;
+                            max-height: 50px;
+                        }
+                    }
+                }
+            }
+        }
+        .projets-container {
+            @include abs.flex-centre;
+            flex-direction: column;
+            gap: 1rem;
+            .projet-info {
+                display: flex;
+                flex-direction: row;
+                width: 30%;
+                border: 1px solid #000;
+                border-radius: 15px;
+                &--txt {
+                    display: flex;
+                    flex-direction: column;
+                    width: 50%;
+                    &__name, &__link {
+                        margin: 1rem auto;
+                    }
+                    &__desc{
+                        margin: 0 auto;
+                    }
+                    a, a:visited {
+                        color: rgb(0, 102, 204);
+                        &:hover {
+                            opacity: 0.85;
+                            transition: opacity 0.2s ease-in;
+                        }
+                    }
+                }
+                &--img {
+                    @include abs.flex-centre;
+                    width: 50%;
+                    img {
+                        border-radius: 15px;
+                    }
+                }
+            }
+        }
+    }
+}   
