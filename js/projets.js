@@ -36,6 +36,7 @@ let btnAddProj = document.getElementById("btnAddProj");
 let btnAPChoice = document.getElementById("btnAPChoice");
 let btnConfirmAP = document.getElementById("btnConfirmAP");
 let btnCancelAP = document.getElementById("btnCancelAP");
+let btnMPChoice = document.getElementById("btnMPChoice");
 // Modifier/Supprimer
 let actionsHTML = `<i class="fas fa-edit" onclick="modProj(this.id)"></i><i class="fas fa-trash-alt" onclick="rmvProj(this.id)"></i>`;
 
@@ -234,7 +235,69 @@ btnCancelAP.addEventListener("click", () => {
 
 // Modification projet
 function modProj(clicked_id) {
-    console.log(`Vous avez cliqué sur Modifier.`);
+
+    // Récupère la ligne (<tr>) du projet
+    let projRowToMod = document.getElementById(clicked_id).parentNode.parentNode;
+
+    // Stocke l'ID dans une variable (utile pour array)
+    let IDprojToMod = projRowToMod.id.substr(7);
+
+    // Modification des td nom/description/URL/image dans le tableau
+    let pRTMc = projRowToMod.children; // Cellules de la ligne à modifier
+
+    // Apparition/disparition des options CRUD
+    btnAddProj.style.display = "none"; // Le bouton ajouter disparaît
+    
+    // Enlever les boutons modifier/supprimer des autres projets
+    let allProjectRows = document.querySelectorAll("tbody tr");
+    // Pour parcourir la liste des lignes du tableau
+    allProjectRows.forEach(projectRow => {
+        // Enlever les boutons modifier et supprimer des autres projets
+        if (projectRow.id.substr(7) !== IDprojToMod) {
+            projectRow.lastChild.innerHTML = "";
+        }
+    });
+
+    // Stocke les informations à mettre dans l'input
+    let infoInInput = "";
+    // Stocke l'index (dans projCategoriesNoID) de ce qu'il faut mettre dans l'input
+    let indmodQuelleInfo = 0;
+    // Stocke ce qu'il faut mettre dans l'input
+    let modQuelleInfo = "";
+
+    // Pour parcourir le tableau pRTMc
+    for (let pRTMCcount = 1; pRTMCcount < pRTMc.length; pRTMCcount++) {
+        // À chaque catégorie (sauf ID), effectue une modification
+        if (pRTMc[pRTMCcount] == projRowToMod.lastChild) {
+            pRTMc[pRTMCcount].innerHTML = "" // Empêche de modifier ou supprimer pendant qu'on modifie déjà
+        } else {
+            // Création des input
+            modProjTCInput = document.createElement("input");
+            // Récupération des données à mettre dans les input
+            infoInInput = pRTMc[pRTMCcount].innerHTML;
+
+            // Si on a un <a> ou un <img>, prendre le lien comme value, sinon prendre le texte
+            if (infoInInput.includes('<a href=')){
+                infoInInput = pRTMc[pRTMCcount].firstChild.href;
+                modProjTCInput.value = `${infoInInput}`;
+            } else if (infoInInput.includes('<img src=')) {
+                infoInInput = pRTMc[pRTMCcount].firstChild.src;
+                modProjTCInput.value = `${infoInInput}`;
+            } else {
+                modProjTCInput.value = `${infoInInput}`;
+            }
+            modProjTCInput.type = "text";
+
+            indmodQuelleInfo = pRTMCcount - 1;
+            modQuelleInfo = projCategoriesNoID[indmodQuelleInfo];
+
+            modProjTCInput.name = `modProj${modQuelleInfo}`;
+            modProjTCInput.id = `modProj${modQuelleInfo}`;
+            modProjTCInput.placeholder = `${modQuelleInfo}...`;
+            //appendChild
+            pRTMc[pRTMCcount].appendChild(modProjTCInput);
+        }
+    }
 }
 
 // Suppression projet
