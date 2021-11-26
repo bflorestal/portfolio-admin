@@ -334,7 +334,7 @@ main section .projets-crud {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 2rem 0;
+  margin: 1rem 0 2rem 0;
   gap: 1rem;
 }
 main section .projets-crud--boutons {
@@ -389,6 +389,14 @@ main section .projets-crud--table_container table th a:hover, main section .proj
 main section .projets-crud--table_container table th img, main section .projets-crud--table_container table td img {
   max-width: 100px;
   max-height: 100px;
+}
+main section .projets-crud--table_container table th .fas, main section .projets-crud--table_container table td .fas {
+  margin: 0 6px;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in;
+}
+main section .projets-crud--table_container table th .fas:hover, main section .projets-crud--table_container table td .fas:hover {
+  opacity: 0.6;
 }
 main section .projets-crud--table_container table textarea {
   border: 1px solid #3e4446;
