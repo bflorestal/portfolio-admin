@@ -49,19 +49,6 @@
                 <div class="projets-crud--boutons">
                     <button class="bouton" id="btnAddProj" onclick="addProj()">Ajouter</button>
                 </div>
-                <!-- Formulaire
-                <div class="mon-formulaire">
-                    <input type="text" name="projetNom" id="projetNom" placeholder="Nom">
-                    <textarea name="projetDesc" id="projetDesc" rows="5" cols="33" placeholder="Description"></textarea>
-                    <div>
-                        <input type="text" name="projetURL" id="projetURL" placeholder="Lien">
-                        <input type="text" name="projetIMG" id="projetIMG" placeholder="Lien image">
-                    </div>
-                    <div>
-                        <a href="?test=ok" id="projetValider">Valider</a>
-                    </div>
-                </div>
-                -->
                 <div class="projets-crud--table_container">
                     <table id="monTableau">
                         <thead>
@@ -78,25 +65,15 @@
                         </tbody>
                     </table>
                     <div class="btnCCcontainer" id="btnAPChoice">
-                        <a class="bouton" id="btnConfirmAP" onclick="confirmAddProj()" disabled>Confirmer</a>
+                        <a class="bouton" id="btnConfirmAP" onclick="confirmAddProj()">Confirmer</a>
                         <a class="bouton" id="btnCancelAP">Annuler</a>
                     </div>
-                </div>
-            </div>
-            <!-- Affichage projets
-            <div class="projets-container" id="projCont">
-                <div class="projet-info">
-                    <div class="projet-info--txt">
-                        <h3 class="projet-info--txt__name">Nom projet</h3>
-                        <p class="projet-info--txt__desc">Description du projet</p>
-                        <a class="projet-info--txt__link" href="#">Lien</a>
-                    </div>
-                    <div class="projet-info--img">
-                        <img src="https://picsum.photos/200/100" alt="Photo projet">
+                    <div class="btnCCcontainer" id="btnMPChoice">
+                        <a class="bouton" id="btnConfirmMP" onclick="confirmModProj()">Confirmer</a>
+                        <a class="bouton" id="btnCancelMP">Annuler</a>
                     </div>
                 </div>
             </div>
-            -->
         </section>
         <footer>
             <div class="footer-container">
